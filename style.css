@@ -1,0 +1,960 @@
+/* =========================================
+   ROOT & RESET  — لا تعديل على المحتوى
+   ========================================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0
+}
+
+:root {
+  --cream: #fdf8f2;
+  --paper: #fffdf8;
+  --navy: #173f72;
+  --blue: #4f79ad;
+  --light: #dce8f3;
+  --gold: #b59a63;
+  --gold2: #d4b87a;
+  --rose: #c9748a;
+  --text: #24364c;
+  --muted: #718096;
+}
+
+html {
+  scroll-behavior: smooth
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--text);
+  font-family: Montserrat, Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* نقاط الخلفية */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .13;
+  background:
+    radial-gradient(circle at 10% 15%, #b7cce0 0 2px, transparent 3px),
+    radial-gradient(circle at 88% 20%, #b7cce0 0 2px, transparent 3px),
+    radial-gradient(circle at 15% 80%, #b7cce0 0 2px, transparent 3px),
+    radial-gradient(circle at 85% 85%, #b7cce0 0 2px, transparent 3px);
+  z-index: 0;
+}
+
+/* =========================================
+   UTILITY
+   ========================================= */
+.hidden {
+  display: none !important
+}
+
+/* =========================================
+   OPENING SCREEN
+   ========================================= */
+.opening {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(145deg,
+      rgba(255, 248, 242, .95) 0%,
+      rgba(220, 232, 243, .85) 55%,
+      rgba(255, 245, 248, .95) 100%);
+}
+
+/* الزهرتان الجانبيتان */
+.opening-flower {
+  position: absolute;
+  color: var(--rose);
+  font-size: 200px;
+  opacity: .10;
+  animation: floatPetal 7s ease-in-out infinite;
+  filter: drop-shadow(0 0 50px rgba(201, 116, 138, .25));
+  user-select: none;
+}
+
+.flower-left {
+  left: -55px;
+  top: 12%;
+  animation-delay: 0s
+}
+
+.flower-right {
+  right: -55px;
+  bottom: 12%;
+  animation-delay: -3.5s
+}
+
+@keyframes floatPetal {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1)
+  }
+
+  50% {
+    transform: translateY(-22px) rotate(10deg) scale(1.04)
+  }
+}
+
+/* البطاقة */
+.opening-card {
+  width: min(88%, 500px);
+  padding: 72px 36px 62px;
+  text-align: center;
+  background: rgba(255, 253, 248, .9);
+  border: 1px solid rgba(181, 154, 99, .45);
+  box-shadow:
+    0 2px 0 rgba(201, 116, 138, .1),
+    0 28px 70px rgba(23, 63, 114, .14),
+    inset 0 1px 0 rgba(255, 255, 255, .85);
+  position: relative;
+  backdrop-filter: blur(10px);
+  animation: cardIn .9s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(.97)
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1)
+  }
+}
+
+/* أركان الكارت */
+.opening-card::before,
+.opening-card::after {
+  content: "";
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border: 1.5px solid var(--gold);
+  transition: .35s ease;
+}
+
+.opening-card::before {
+  top: 14px;
+  left: 14px;
+  border-right: 0;
+  border-bottom: 0
+}
+
+.opening-card::after {
+  right: 14px;
+  bottom: 14px;
+  border-left: 0;
+  border-top: 0
+}
+
+.opening-card:hover::before,
+.opening-card:hover::after {
+  width: 56px;
+  height: 56px;
+  border-color: var(--rose)
+}
+
+/* القلب */
+.tiny-heart {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 26px;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+  color: white;
+  font-size: 22px;
+  box-shadow: 0 10px 28px rgba(23, 63, 114, .28);
+  animation: heartbeat 2.2s ease-in-out infinite, fadeUp .7s .15s ease both;
+}
+
+@keyframes heartbeat {
+
+  0%,
+  100% {
+    transform: scale(1)
+  }
+
+  14% {
+    transform: scale(1.16)
+  }
+
+  28% {
+    transform: scale(1)
+  }
+
+  42% {
+    transform: scale(1.1)
+  }
+
+  70% {
+    transform: scale(1)
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px)
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0)
+  }
+}
+
+/* Eyebrow */
+.eyebrow,
+.section-kicker {
+  letter-spacing: 5px;
+  font-size: 11px;
+  color: var(--navy);
+  font-weight: 600;
+  animation: fadeUp .7s .4s ease both;
+}
+
+/* العنوان الرئيسي في الكارت */
+.opening h1,
+.hero h1,
+.message-section h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+  color: var(--navy);
+}
+
+.opening h1 {
+  font-size: clamp(58px, 12vw, 100px);
+  line-height: .75;
+  margin: 26px 0;
+  animation: fadeUp .8s .5s ease both;
+}
+
+.opening h1 span {
+  font-size: .5em;
+  display: block;
+  color: var(--gold);
+  margin: 16px;
+  font-style: italic;
+}
+
+.date {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 24px;
+  color: var(--navy);
+  animation: fadeUp .7s .6s ease both;
+  margin-bottom: 28px;
+  display: block;
+}
+
+/* =========================================
+   BUTTONS
+   ========================================= */
+.primary-btn,
+.outline-btn {
+  border: 0;
+  border-radius: 40px;
+  padding: 15px 40px;
+  font: 600 11px Montserrat;
+  letter-spacing: 3px;
+  cursor: pointer;
+  transition: all .3s cubic-bezier(.34, 1.56, .64, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, var(--navy), #2a5fa0);
+  color: white;
+  box-shadow: 0 12px 28px rgba(23, 63, 114, .3);
+  animation: fadeUp .7s .75s ease both;
+}
+
+.primary-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, .18) 70%);
+  transform: translateX(-110%);
+  transition: transform .45s ease;
+}
+
+.primary-btn:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 20px 40px rgba(23, 63, 114, .38)
+}
+
+.primary-btn:hover::after {
+  transform: translateX(110%)
+}
+
+.outline-btn {
+  background: transparent;
+  border: 1.5px solid var(--navy);
+  color: var(--navy);
+}
+
+.outline-btn:hover {
+  background: var(--navy);
+  color: white;
+  transform: translateY(-2px)
+}
+
+/* =========================================
+   HERO
+   ========================================= */
+.section {
+  min-height: 80svh;
+  padding: 100px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero {
+  min-height: 100svh;
+  background:
+    radial-gradient(ellipse at 12% 38%, rgba(201, 116, 138, .09), transparent 32%),
+    radial-gradient(ellipse at 88% 62%, rgba(75, 121, 173, .12), transparent 32%),
+    var(--cream);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border: 1px solid rgba(181, 154, 99, .4);
+  pointer-events: none;
+  animation: borderShimmer 5s ease-in-out infinite;
+}
+
+@keyframes borderShimmer {
+
+  0%,
+  100% {
+    border-color: rgba(181, 154, 99, .4)
+  }
+
+  50% {
+    border-color: rgba(201, 116, 138, .45)
+  }
+}
+
+.hero-content {
+  z-index: 1
+}
+
+.floral-corner {
+  position: absolute;
+  color: var(--blue);
+  font-size: 70px;
+  opacity: .6;
+  letter-spacing: -25px;
+  animation: floralBob 5s ease-in-out infinite;
+  filter: drop-shadow(0 0 12px rgba(79, 121, 173, .2));
+}
+
+.top-left {
+  top: 26px;
+  left: 16px;
+  animation-delay: 0s
+}
+
+.top-right {
+  top: 26px;
+  right: 16px;
+  animation-delay: -2.5s
+}
+
+@keyframes floralBob {
+
+  0%,
+  100% {
+    transform: translateY(0)
+  }
+
+  50% {
+    transform: translateY(-8px)
+  }
+}
+
+.hero h1 {
+  font-size: clamp(75px, 15vw, 145px);
+  line-height: .6;
+  margin: 20px 0
+}
+
+.amp {
+  font: 50px "Cormorant Garamond";
+  color: var(--gold);
+  margin: 32px 0;
+  opacity: .85
+}
+
+.small-title {
+  font-size: 11px;
+  letter-spacing: 5px;
+  color: var(--navy);
+  margin-top: 40px
+}
+
+.ornament {
+  color: var(--gold);
+  letter-spacing: 6px;
+  margin: 30px 0;
+  font-size: 14px;
+  animation: shimmerText 3s ease-in-out infinite;
+}
+
+@keyframes shimmerText {
+
+  0%,
+  100% {
+    opacity: .8
+  }
+
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 14px rgba(181, 154, 99, .5)
+  }
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 30px;
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: var(--muted);
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: .7
+  }
+
+  50% {
+    transform: translateY(7px);
+    opacity: .3
+  }
+}
+
+/* =========================================
+   SECTION HEADINGS
+   ========================================= */
+h2 {
+  font: 500 clamp(42px, 8vw, 68px) "Cormorant Garamond";
+  color: var(--navy);
+  margin: 10px 0;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 13px;
+  letter-spacing: 1px
+}
+
+/* =========================================
+   COUNTDOWN
+   ========================================= */
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(60px, 105px));
+  gap: 14px;
+  margin-top: 55px;
+}
+
+.countdown div {
+  background: rgba(255, 255, 255, .75);
+  border: 1px solid #ded7c8;
+  padding: 24px 8px;
+  border-radius: 6px;
+  box-shadow: 0 8px 22px rgba(23, 63, 114, .07);
+  position: relative;
+  overflow: hidden;
+  transition: transform .3s ease;
+}
+
+.countdown div::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--rose), var(--gold), var(--rose));
+}
+
+.countdown div:hover {
+  transform: translateY(-4px)
+}
+
+.countdown strong {
+  display: block;
+  font: 500 38px "Cormorant Garamond";
+  color: var(--navy);
+}
+
+.countdown strong.tick {
+  animation: numPop .3s ease
+}
+
+@keyframes numPop {
+  0% {
+    transform: scale(1)
+  }
+
+  50% {
+    transform: scale(1.22)
+  }
+
+  100% {
+    transform: scale(1)
+  }
+}
+
+.countdown span {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--muted)
+}
+
+/* =========================================
+   GALLERY
+   ========================================= */
+.gallery-section {
+  background: linear-gradient(155deg, #f5f0e8, #edf2f6);
+}
+
+.gallery {
+  width: min(900px, 100%);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 35px;
+}
+
+/* لو في صورة وحدة بس، خليها تاخد العرض كله */
+.gallery:has(.photo:nth-child(1):last-child) {
+  grid-template-columns: 1fr;
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+.photo {
+  height: 260px;
+  border: 0;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  color: var(--navy);
+  font: 500 32px "Cormorant Garamond";
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  box-shadow: 0 10px 28px rgba(23, 63, 114, .1);
+  transition: transform .4s cubic-bezier(.34, 1.56, .64, 1), box-shadow .4s ease;
+  padding: 0;
+}
+
+/* صورة حقيقية داخل الـ photo button */
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform .4s cubic-bezier(.34, 1.56, .64, 1), filter .3s ease;
+}
+
+.photo:hover img {
+  transform: scale(1.06);
+  filter: brightness(1.08);
+}
+
+.photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, .15), rgba(23, 63, 114, .15));
+  transition: opacity .3s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.photo:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 22px 48px rgba(23, 63, 114, .18)
+}
+
+.photo:hover::before {
+  opacity: .7
+}
+
+.photo span {
+  position: relative;
+  z-index: 2
+}
+
+/* الصور الحقيقية لا تحتاج background gradient — فقط الـ placeholders */
+.photo-one:not(:has(img)) {
+  background: radial-gradient(circle at 25% 25%, #fff 0 8%, transparent 9%), linear-gradient(135deg, #e8edf1, #a7bdd2)
+}
+
+.photo-two:not(:has(img)) {
+  background: radial-gradient(circle at 70% 25%, #fff 0 9%, transparent 10%), linear-gradient(45deg, #dfe9f2, #f8f4ea)
+}
+
+.photo-three:not(:has(img)) {
+  background: radial-gradient(circle at 30% 70%, #fff 0 7%, transparent 8%), linear-gradient(135deg, #c2d3e3, #f5f1e7)
+}
+
+.photo-four:not(:has(img)) {
+  background: radial-gradient(circle at 75% 70%, #fff 0 8%, transparent 9%), linear-gradient(45deg, #f6f1e7, #b9cde0)
+}
+
+.photo-note {
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 18px
+}
+
+/* =========================================
+   CEREMONY INFO
+   ========================================= */
+.info-frame {
+  width: min(650px, 100%);
+  margin-top: 35px;
+  padding: 48px 28px;
+  border: 1px solid rgba(181, 154, 99, .5);
+  background: rgba(255, 255, 255, .55);
+  position: relative;
+  border-radius: 4px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 18px 55px rgba(23, 63, 114, .08);
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px
+}
+
+.info-item .icon {
+  font-size: 22px;
+  color: var(--navy)
+}
+
+.info-item small {
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  font-weight: 600
+}
+
+.info-item strong {
+  font: 500 27px "Cormorant Garamond";
+  color: var(--navy)
+}
+
+.info-item p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 28px auto;
+  width: 65%;
+}
+
+.map-btn {
+  display: inline-block;
+  margin-top: 28px;
+  text-decoration: none;
+  cursor: pointer
+}
+
+/* =========================================
+   CALENDAR
+   ========================================= */
+.calendar {
+  width: min(620px, 100%);
+  margin: 30px auto;
+  background: rgba(255, 255, 255, .7);
+  border: 1px solid #ded7c8;
+  border-radius: 8px;
+  padding: 22px;
+  box-shadow: 0 10px 28px rgba(23, 63, 114, .07);
+}
+
+.weekdays,
+.days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px
+}
+
+.weekdays {
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 1px;
+  padding-bottom: 12px
+}
+
+.days-grid button {
+  aspect-ratio: 1;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 13px;
+  transition: all .2s ease;
+}
+
+.days-grid button:hover:not(.wedding):not(.empty) {
+  background: var(--light);
+  transform: scale(1.1);
+}
+
+.days-grid button.wedding {
+  background: linear-gradient(135deg, var(--navy), var(--blue));
+  color: #fff;
+  box-shadow: 0 7px 20px rgba(23, 63, 114, .35);
+  animation: weddingGlow 2.2s ease-in-out infinite;
+}
+
+@keyframes weddingGlow {
+
+  0%,
+  100% {
+    box-shadow: 0 7px 20px rgba(23, 63, 114, .35)
+  }
+
+  50% {
+    box-shadow: 0 7px 32px rgba(201, 116, 138, .55)
+  }
+}
+
+.days-grid button.empty {
+  pointer-events: none;
+  opacity: .25
+}
+
+/* =========================================
+   MESSAGE SECTION
+   ========================================= */
+.message-section {
+  min-height: 75svh;
+  background: linear-gradient(155deg, rgba(255, 253, 248, .95), rgba(248, 240, 248, .9));
+}
+
+.large-ornament {
+  font-size: 60px;
+  color: var(--blue);
+  opacity: .55;
+  animation: spin 14s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg)
+  }
+
+  to {
+    transform: rotate(360deg)
+  }
+}
+
+.message-section h2 {
+  font-size: 70px;
+  line-height: .85
+}
+
+.message-section h3 {
+  font: 500 48px "Cormorant Garamond";
+  color: var(--navy)
+}
+
+.message {
+  max-width: 450px;
+  color: var(--muted);
+  font: 20px "Cormorant Garamond"
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+footer {
+  padding: 36px 20px;
+  background: linear-gradient(135deg, var(--navy), #0f2b52);
+  color: white;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 4px;
+}
+
+footer span {
+  display: block;
+  margin-top: 10px;
+  color: #cddced;
+  font-size: 9px
+}
+
+/* =========================================
+   MUSIC BUTTON
+   ========================================= */
+.music-btn {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, .35);
+  background: linear-gradient(135deg, var(--navy), var(--blue));
+  color: white;
+  font-size: 20px;
+  z-index: 20;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .22);
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+.music-btn:hover {
+  transform: scale(1.12);
+  box-shadow: 0 14px 34px rgba(23, 63, 114, .4)
+}
+
+/* =========================================
+   LIGHTBOX
+   ========================================= */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 31, 53, .9);
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 30px;
+  backdrop-filter: blur(6px);
+}
+
+.lightbox button {
+  position: absolute;
+  top: 20px;
+  right: 26px;
+  border: 0;
+  background: none;
+  color: #fff;
+  font-size: 44px;
+  cursor: pointer;
+  opacity: .7;
+  transition: .2s ease;
+}
+
+.lightbox button:hover {
+  opacity: 1;
+  transform: scale(1.1)
+}
+
+.lightbox div {
+  width: min(600px, 90vw);
+  height: min(75vh, 650px);
+  display: grid;
+  place-items: center;
+  color: white;
+  font: 70px "Cormorant Garamond";
+  text-align: center;
+  border: 1px solid var(--gold);
+  background: linear-gradient(135deg, #dce8f3, #f8f5ed);
+  border-radius: 6px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .4);
+  overflow: hidden;
+}
+
+/* عرض الصورة الحقيقية داخل الـ lightbox */
+.lightbox div img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+/* =========================================
+   SCROLL REVEAL  (تضاف classes من JS)
+   ========================================= */
+.will-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity .75s ease, transform .75s cubic-bezier(.16, 1, .3, 1);
+}
+
+.will-reveal.shown {
+  opacity: 1;
+  transform: translateY(0)
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+@media(max-width:600px) {
+  .section {
+    padding: 80px 15px
+  }
+
+  .gallery {
+    grid-template-columns: 1fr 1fr
+  }
+
+  .photo {
+    height: 190px;
+    font-size: 26px
+  }
+
+  .countdown {
+    gap: 6px
+  }
+
+  .countdown strong {
+    font-size: 30px
+  }
+
+  .countdown div {
+    padding: 18px 4px
+  }
+
+  .info-frame {
+    padding: 36px 15px
+  }
+
+  .hero h1 {
+    font-size: 85px
+  }
+
+  .message-section h2 {
+    font-size: 60px
+  }
+}

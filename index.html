@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#173f72">
+  <title>Mahmoud &amp; May | Wedding Invitation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div id="opening" class="opening">
+    <div class="opening-flower flower-left">✿</div>
+    <div class="opening-flower flower-right">✿</div>
+    <div class="opening-card">
+      <div class="tiny-heart">♥</div>
+      <p class="eyebrow">YOU ARE CORDIALLY INVITED</p>
+      <h1>Mahmoud<span>&amp;</span>May</h1>
+      <p class="date">October 15, 2026</p>
+      <button id="openBtn" class="primary-btn">OPEN</button>
+    </div>
+  </div>
+
+  <main id="site" class="site hidden">
+
+    <section class="hero section">
+      <div class="floral-corner top-left">✿ ❀</div>
+      <div class="floral-corner top-right">❀ ✿</div>
+      <div class="hero-content">
+        <p class="eyebrow">GROOM</p>
+        <h1>Mahmoud</h1>
+        <div class="amp">&amp;</div>
+        <p class="eyebrow">BRIDE</p>
+        <h1>May</h1>
+        <div class="ornament">✦ ─── ❀ ─── ✦</div>
+        <p class="small-title">WE ARE GETTING MARRIED</p>
+      </div>
+      <div class="scroll-hint">SCROLL ↓</div>
+    </section>
+
+    <section class="section countdown-section">
+      <p class="section-kicker">SAVE THE DATE</p>
+      <h2>Our Special Day</h2>
+      <p class="muted">Thursday · October 15 · 2026</p>
+      <div id="countdown" class="countdown">
+        <div><strong id="days">00</strong><span>Days</span></div>
+        <div><strong id="hours">00</strong><span>Hours</span></div>
+        <div><strong id="minutes">00</strong><span>Minutes</span></div>
+        <div><strong id="seconds">00</strong><span>Seconds</span></div>
+      </div>
+    </section>
+
+    <section class="section gallery-section">
+      <p class="section-kicker">MEMORIES</p>
+      <h2>Photo Gallery</h2>
+      <div class="gallery">
+        <button class="photo photo-one" data-photo="photo-one"><img
+            src="image/WhatsApp Image 2026-08-16 at 1.46.29 AM.jpeg" alt=""></button>
+      </div>
+      <p class="photo-note">Replace these cards with your favorite photos in <b>style.css</b>.</p>
+    </section>
+
+    <section class="section ceremony-section">
+      <p class="section-kicker">CEREMONY INFO</p>
+      <h2>Join Us</h2>
+      <div class="info-frame">
+        <div class="info-item">
+          <span class="icon">♥</span>
+          <small>DATE</small>
+          <strong>Thursday, October 15, 2026</strong>
+        </div>
+        <div class="divider"></div>
+        <div class="info-item">
+          <span class="icon">◷</span>
+          <small>TIME</small>
+          <strong>08:00 PM</strong>
+        </div>
+        <div class="divider"></div>
+        <div class="info-item">
+          <span class="icon">⌖</span>
+          <small>VENUE</small>
+          <strong>Your Wedding Venue</strong>
+          <p>Egypt · Cairo</p>
+        </div>
+        <a class="primary-btn map-btn" href="https://maps.app.goo.gl/c6B6Jn9xwUYui8KS8?g_st=aw" target="_blank"
+          rel="noopener">VIEW
+          LOCATION</a>
+      </div>
+    </section>
+
+    <section class="section calendar-section">
+      <p class="section-kicker">A DATE TO REMEMBER</p>
+      <h2>October 2026</h2>
+      <div class="calendar">
+        <div class="weekdays">
+          <span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span><span>SUN</span>
+        </div>
+        <div id="calendarGrid" class="days-grid"></div>
+      </div>
+      <!-- <button id="calendarBtn" class="outline-btn">ADD TO CALENDAR</button> -->
+    </section>
+
+    <section class="section message-section">
+      <div class="large-ornament">❀</div>
+      <p class="section-kicker">WITH LOVE</p>
+      <h2>We Joyfully<br>Announce</h2>
+      <p class="message">The wedding of our beloved children.</p>
+      <h3>Mahmoud &amp; May</h3>
+      <div class="ornament">✦ ─── ❀ ─── ✦</div>
+      <p class="muted">Your presence will make our celebration complete.</p>
+    </section>
+
+    <footer>
+      <div>Mahmoud &amp; May</div>
+      <span>15 · 10 · 2026</span>
+    </footer>
+  </main>
+
+  <div id="lightbox" class="lightbox hidden">
+    <button id="closeLightbox" aria-label="Close">×</button>
+    <div id="lightboxContent"></div>
+  </div>
+
+  <button id="musicBtn" class="music-btn hidden" aria-label="Toggle music">♫</button>
+  <audio id="music" loop>
+    <!-- Put your wedding song at assets/music.mp3 -->
+    <source src="sound/WhatsApp Audio 2026-08-15 at 10.40.12 PM.mpeg" type="audio/mpeg">
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
