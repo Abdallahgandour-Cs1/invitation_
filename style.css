@@ -28,8 +28,21 @@ body {
   margin: 0;
   background: var(--cream);
   color: var(--text);
-  font-family: Montserrat, Arial, sans-serif;
+  font-family: 'Amiri', 'Montserrat', Arial, sans-serif;
   overflow-x: hidden;
+}
+
+/* ضبط letter-spacing للعربية */
+[lang="ar"] .eyebrow,
+[lang="ar"] .section-kicker,
+[lang="ar"] .scroll-hint,
+[lang="ar"] .small-title,
+[lang="ar"] .countdown span,
+[lang="ar"] .info-item small,
+[lang="ar"] .weekdays span,
+[lang="ar"] .primary-btn,
+[lang="ar"] .outline-btn {
+  letter-spacing: 0 !important;
 }
 
 /* نقاط الخلفية */
@@ -219,7 +232,7 @@ body::before {
 .eyebrow,
 .section-kicker {
   letter-spacing: 5px;
-  font-size: 11px;
+  font-size: 14px;
   color: var(--navy);
   font-weight: 600;
   animation: fadeUp .7s .4s ease both;
@@ -235,7 +248,7 @@ body::before {
 }
 
 .opening h1 {
-  font-size: clamp(58px, 12vw, 100px);
+  font-size: clamp(68px, 14vw, 116px);
   line-height: .75;
   margin: 26px 0;
   animation: fadeUp .8s .5s ease both;
@@ -251,7 +264,7 @@ body::before {
 
 .date {
   font-family: "Cormorant Garamond", serif;
-  font-size: 24px;
+  font-size: 30px;
   color: var(--navy);
   animation: fadeUp .7s .6s ease both;
   margin-bottom: 28px;
@@ -265,8 +278,8 @@ body::before {
 .outline-btn {
   border: 0;
   border-radius: 40px;
-  padding: 15px 40px;
-  font: 600 11px Montserrat;
+  padding: 17px 44px;
+  font: 600 14px Montserrat;
   letter-spacing: 3px;
   cursor: pointer;
   transition: all .3s cubic-bezier(.34, 1.56, .64, 1);
@@ -394,7 +407,7 @@ body::before {
 }
 
 .hero h1 {
-  font-size: clamp(75px, 15vw, 145px);
+  font-size: clamp(88px, 17vw, 165px);
   line-height: .6;
   margin: 20px 0
 }
@@ -407,7 +420,7 @@ body::before {
 }
 
 .small-title {
-  font-size: 11px;
+  font-size: 14px;
   letter-spacing: 5px;
   color: var(--navy);
   margin-top: 40px
@@ -461,14 +474,14 @@ body::before {
    SECTION HEADINGS
    ========================================= */
 h2 {
-  font: 500 clamp(42px, 8vw, 68px) "Cormorant Garamond";
+  font: 500 clamp(50px, 9vw, 80px) "Cormorant Garamond";
   color: var(--navy);
   margin: 10px 0;
 }
 
 .muted {
   color: var(--muted);
-  font-size: 13px;
+  font-size: 16px;
   letter-spacing: 1px
 }
 
@@ -509,7 +522,7 @@ h2 {
 
 .countdown strong {
   display: block;
-  font: 500 38px "Cormorant Garamond";
+  font: 500 46px "Cormorant Garamond";
   color: var(--navy);
 }
 
@@ -532,7 +545,7 @@ h2 {
 }
 
 .countdown span {
-  font-size: 9px;
+  font-size: 13px;
   letter-spacing: 2px;
   color: var(--muted)
 }
@@ -664,14 +677,14 @@ h2 {
 }
 
 .info-item small {
-  font-size: 9px;
+  font-size: 13px;
   letter-spacing: 3px;
   color: var(--gold);
   font-weight: 600
 }
 
 .info-item strong {
-  font: 500 27px "Cormorant Garamond";
+  font: 500 32px "Cormorant Garamond";
   color: var(--navy)
 }
 
@@ -717,7 +730,7 @@ h2 {
 
 .weekdays {
   color: var(--muted);
-  font-size: 9px;
+  font-size: 13px;
   letter-spacing: 1px;
   padding-bottom: 12px
 }
@@ -729,7 +742,7 @@ h2 {
   color: var(--text);
   cursor: pointer;
   border-radius: 50%;
-  font-size: 13px;
+  font-size: 16px;
   transition: all .2s ease;
 }
 
@@ -789,19 +802,19 @@ h2 {
 }
 
 .message-section h2 {
-  font-size: 70px;
+  font-size: 82px;
   line-height: .85
 }
 
 .message-section h3 {
-  font: 500 48px "Cormorant Garamond";
+  font: 500 58px "Cormorant Garamond";
   color: var(--navy)
 }
 
 .message {
   max-width: 450px;
   color: var(--muted);
-  font: 20px "Cormorant Garamond"
+  font: 24px "Cormorant Garamond"
 }
 
 /* =========================================
